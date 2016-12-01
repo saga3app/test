@@ -1,0 +1,158 @@
+me" : "test",
+  "label" : "Prvni krasny process s formem",
+  "revision" : 23,
+  "edges" : [ {
+    "name" : "e1",
+    "condition" : "true",
+    "from" : {
+      "type" : "START"
+    },
+    "to" : {
+      "name" : "task1",
+      "type" : "TASK"
+    }
+  }, {
+    "name" : "e2",
+    "condition" : "true",
+    "from" : {
+      "name" : "task1",
+      "type" : "TASK"
+    },
+    "to" : {
+      "name" : "task2",
+      "type" : "TASK"
+    }
+  }, {
+    "name" : "e3",
+    "condition" : "true",
+    "from" : {
+      "name" : "task2",
+      "type" : "TASK"
+    },
+    "to" : {
+      "type" : "END"
+    }
+  } ],
+  "tasks" : [ {
+    "name" : "task1",
+    "label" : "Definition",
+    "sections" : [ {
+      "name" : "Section 1",
+      "label" : "Prvni sekce",
+      "widgets" : [ {
+        "name" : "w1",
+        "label" : "Texticek",
+        "ui" : "text-widget",
+		"required": "true",
+		"properties" : { 
+			"length": 20
+		},
+        "binding" : {
+          "value" : "firstValue"
+        }
+      }, {
+        "name" : "w2",
+        "label" : "Birth Date",
+        "visible" : "firstValue!='XXX'",
+        "ui" : "date-widget",
+        "binding" : {
+          "value" : "person.birthDate"
+        },
+        "properties" : { }
+      }, {
+        "name" : "w3",
+        "label" : "Seznam",
+        "ui" : "checkbox-widget",
+        "binding" : {
+          "selected" : "person.somelist"
+        },
+        "properties" : {
+          "items" : {
+            "no" : "Ne",
+            "maybe" : "mozna",
+            "yes" : "Ano"
+          }
+        }
+      } ]
+    }, {
+      "name" : "Section 2",
+      "label" : "Druha sekce",
+      "widgets" : [ {
+        "name" : "w4",
+        "label" : "Cudlik s Url",
+        "ui" : "button-widget",
+        "binding" : {
+          "value" : "cudlik"
+        },
+        "properties" : {
+          "url" : "'http://www.seznam.cz/' + firstValue"
+        }
+      }, {
+        "name" : "w5",
+        "label" : "Cudlik",
+        "editable" : "person.somelist.indexOf('yes')>=0",
+        "ui" : "button-widget",
+        "binding" : {
+          "value" : "cudlik2"
+        },
+        "properties" : { }
+      } ]
+    } ],
+    "commands" : [ {
+      "name" : "Complete",
+      "label" : "Complete",
+      "type" : "COMPLETE",
+      "primary" : true
+    }, {
+      "name" : "Save",
+      "label" : "Save",
+      "type" : "SAVE",
+      "primary" : false
+    }, {
+      "name" : "Suspend",
+      "label" : "Suspend",
+      "type" : "SUSPEND",
+      "primary" : false
+    }, {
+      "name" : "Exit",
+      "label" : "Exit",
+      "type" : "EXIT",
+      "primary" : false
+    } ],
+    "configurations" : [ {
+      "condition" : "true",
+      "potentialOwner" : {
+        "name" : "role1"
+      }
+    } ]
+  }, {
+    "name" : "task2",
+    "label" : "Processing",
+    "sections" : [ ],
+    "commands" : [ {
+      "name" : "Complete",
+      "label" : "Complete",
+      "type" : "COMPLETE",
+      "primary" : true
+    }, {
+      "name" : "Save",
+      "label" : "Save",
+      "type" : "SAVE",
+      "primary" : false
+    }, {
+      "name" : "Release",
+      "label" : "Release",
+      "type" : "RELEASE",
+      "primary" : false
+    } ],
+    "configurations" : [ {
+      "condition" : "true",
+      "potentialOwner" : {
+        "name" : "role2"
+      }
+    } ]
+  } ],
+  "descriptionExpression" : "\"Prvni krasny process s formem \" + _instance.processId",
+  "obsolete" : false,
+  "defaultAttributes" : { }
+}
