@@ -1,6 +1,6 @@
 {
   "name" : "test",
-  "label" : "Prvni krasny process s formem",
+  "label" : "Prvni krasny process s formem PUSH",
   "revision" : 23,
   "edges" : [ {
     "name" : "e1",
