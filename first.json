@@ -1,4 +1,5 @@
-me" : "test",
+{
+  "name" : "test",
   "label" : "Prvni krasny process s formem",
   "revision" : 23,
   "edges" : [ {
