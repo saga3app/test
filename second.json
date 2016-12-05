@@ -1,0 +1,106 @@
+{
+  "name" : "second",
+  "label" : "Druhy krasny process s dokumenty",
+  "revision" : 1,
+  "edges" : [ {
+    "name" : "e1",
+    "condition" : "true",
+    "from" : {
+      "type" : "START"
+    },
+    "to" : {
+      "name" : "task1",
+      "type" : "TASK"
+    }
+  }, {
+    "name" : "e2",
+    "condition" : "true",
+    "from" : {
+      "name" : "task1",
+      "type" : "TASK"
+    },
+    "to" : {
+      "type" : "END"
+    }
+  } ],
+  "tasks" : [ {
+    "name" : "task1",
+    "label" : "Definition",
+    "sections" : [ {
+      "name" : "Section 1",
+      "label" : "Seznam dokumentu",
+      "widgets" : [ {
+        "name" : "w1",
+        "label" : "Dokumenty",
+        "ui" : "documentlist-widget",
+		"required": "false",
+		"properties" : { 
+		},
+        "binding" : {
+          "documents" : "docs"
+        }
+      }, {
+        "name" : "w2",
+        "label" : "Dokumenty Jinak",
+        "ui" : "select-widget",
+		"required": "false",
+		"properties" : { 
+          "keyExpression": "item.id",
+          "labelExpression": "item.name + ' ' + item.type.name"
+		},
+        "binding" : {
+          "values" : "docs",
+          "selected": "selectedDoc"
+        }
+      }
+      ]
+    } ],
+    "commands" : [ {
+      "name" : "Complete",
+      "label" : "Complete",
+      "type" : "COMPLETE",
+      "primary" : true
+    }, {
+      "name" : "Save",
+      "label" : "Save",
+      "type" : "SAVE",
+      "primary" : false
+    } ],
+    "configurations" : [ {
+      "condition" : "true",
+      "potentialOwner" : {
+        "name" : "role1"
+      }
+    } ]
+  } ],
+  "overview": {
+  	"name": "overview",
+  	"label": "Detail",
+  	"commands" : [ {
+      "name" : "Close",
+      "label" : "Close",
+      "type": "CLOSE",
+      "primary" : true
+    }],
+    "sections": [ {
+      "name" : "Section 1",
+      "label" : "Seznam dokumentu",
+      "widgets" : [ {
+        "name" : "w1",
+        "label" : "Dokumenty",
+        "ui" : "documentlist-widget",
+		"required": "false",
+		"editable": "false",
+		"properties" : { 
+		},
+        "binding" : {
+          "documents" : "docs"
+        }
+      }
+    ]
+  }]
+  },
+  "descriptionExpression" : "\"Druhy krasny process s dokumenty \" + _instance.instanceId",
+  "obsolete" : false,
+  "defaultAttributes" : { }
+}
