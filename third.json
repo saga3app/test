@@ -42,7 +42,18 @@
         "binding" : {
           "selected" : "selectedValue"
         }
-      }]
+      }, {
+        "name" : "w2",
+        "label" : "ShowHtml",
+        "ui" : "showhtml-widget",
+		"properties" : {
+			"template": "<b>${enumLabel(\"PartyType\", selectedValue)}</b>  <i>${_user.displayName}</i>",
+			"watching": ["selectedValue"]
+		},
+        "binding" : {
+        }
+      }
+      ]
     } ],
     "commands" : [ {
       "name" : "Complete",
