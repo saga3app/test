@@ -39,6 +39,27 @@
         "binding" : {
           "client" : "client"
         }
+      }, {
+        "name" : "w2",
+        "label" : "Product",
+        "ui" : "product-widget",
+		"required": "false",
+		"properties" : {
+		},
+        "binding" : {
+          "client" : "client",
+          "product" : "product"
+        }
+      }, {
+        "name" : "w3",
+        "label" : "Account",
+        "ui" : "account-widget",
+		"required": "false",
+		"properties" : {
+		},
+        "binding" : {
+          "account" : "account"
+        }
       } ]
     } ],
     "commands" : [ {
