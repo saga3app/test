@@ -60,6 +60,16 @@
         "binding" : {
           "account" : "account"
         }
+      }, {
+        "name" : "w4",
+        "label" : "Company",
+        "ui" : "company-widget",
+		"required": "false",
+		"properties" : {
+		},
+        "binding" : {
+          "client" : "company"
+        }
       } ]
     } ],
     "commands" : [ {
