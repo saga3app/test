@@ -1,0 +1,117 @@
+{
+  "name" : "currency",
+  "label" : "Exchange kalkulacka",
+  "revision" : 1,
+  "edges" : [ {
+    "name" : "e1",
+    "condition" : "true",
+    "from" : {
+      "type" : "START"
+    },
+    "to" : {
+      "name" : "task1",
+      "type" : "TASK"
+    }
+  }, {
+    "name" : "e2",
+    "condition" : "true",
+    "from" : {
+      "name" : "task1",
+      "type" : "TASK"
+    },
+    "to" : {
+      "type" : "END"
+    }
+  } ],
+  "tasks" : [ {
+    "name" : "task1",
+    "label" : "Definition",
+    "sections" : [ {
+      "name" : "vypocet",
+      "label" : "Vypocet",
+      "widgets" : [ {
+        "name" : "from",
+        "label" : "From",
+        "ui" : "select-widget",
+		"required": "true",
+		"properties" : {
+			"enumeration": "Currency",
+			"keyExpression": "item.name",
+			"labelExpression": "item.label"
+		},
+        "binding" : {
+          "selected" : "from"
+        }
+      }, {
+        "name" : "amount",
+        "label" : "Amount",
+        "ui" : "text-widget",
+		"required": "true",
+		"properties" : {
+		},
+        "binding" : {
+          "value" : "amount"
+        }
+      }, {
+        "name" : "to",
+        "label" : "To",
+        "ui" : "select-widget",
+		"required": "true",
+		"properties" : {
+			"enumeration": "Currency",
+			"keyExpression": "item.name",
+			"labelExpression": "item.label"
+		},
+        "binding" : {
+           "selected" : "to"
+        }
+      }, {
+        "name" : "exchange",
+        "label" : "Spocitat",
+        "ui" : "rest-widget",
+		"required": "false",
+		"properties" : {
+			"urlTemplate": "https://currencyconverter.p.mashape.com/?from=${from}&from_amount=${amount}&to=${to}",
+			"headers": {"X-Mashape-Key": "5DIsdaPhgBmshYd7lBZJi9LtqJcOp1mZorWjsnLqxoXDq7RXUm"}
+		},
+        "binding" : {
+          "response" : "response",
+          "status" : "status"
+        }
+      } , {
+        "name" : "result",
+        "label" : "Vysledek",
+        "ui" : "text-widget",
+		"editable": "false",
+		"properties" : {
+		},
+        "binding" : {
+          "value" : "response.to_amount"
+        }
+      }
+      ]
+    } ],
+    "commands" : [ {
+      "name" : "Complete",
+      "label" : "Complete",
+      "type" : "COMPLETE",
+      "primary" : true
+    }, {
+      "name" : "Save",
+      "label" : "Save",
+      "type" : "SAVE",
+      "primary" : false
+    } ],
+    "configurations" : [ {
+      "condition" : "true",
+      "potentialOwner" : {
+        "name" : "role1"
+      }
+    } ]
+  } ],
+  "descriptionExpression" : "\"Exchange kalkulacka \" + _instance.instanceId",
+  "obsolete" : false,
+  "defaultAttributes" : { },
+  "notifications": [
+  ]
+}
