@@ -1,6 +1,6 @@
 {
   "name" : "third",
-  "label" : "Treti krasny process s comboboxy",
+  "label" : "Treti krasny process s comboboxy a idetitou",
   "revision" : 1,
   "edges" : [ {
     "name" : "e1",
@@ -52,6 +52,15 @@
 		},
         "binding" : {
         }
+      } , {
+        "name" : "w3",
+        "label" : "Uzivak",
+        "ui" : "identity-widget",
+		"properties" : {
+		},
+        "binding" : {
+        	"identity": "uzivak"
+        }
       }
       ]
     } ],
@@ -70,10 +79,33 @@
       "condition" : "true",
       "potentialOwner" : {
         "name" : "role1"
+      },
+      "businessAdministrator" : {
+        "name" : "role1Admin"
       }
-    } ]
+    } ],
+    "notifications": [{
+    	"type": "ADD_TASK",
+  		"condition": "true",
+  		"role": { "name": "notifRole" }
+    }, {
+		"type": "TAKE_TASK",
+		"condition": "true",
+		"user": {
+			"expression": "_instance.createdBy"
+		}
+	}]
   } ],
-  "descriptionExpression" : "\"Treti process s comboboxy \" + _instance.instanceId",
+  "descriptionExpression" : "\"Treti process s comboboxy a idetitou \" + _instance.instanceId",
   "obsolete" : false,
-  "defaultAttributes" : { }
+  "defaultAttributes" : { },
+  "notifications": [
+  		{
+  			"type": "TERMINATE_INSTANCE",
+  			"condition": "true",
+  			"user": {
+				"expression": "_instance.createdBy"
+			}
+  		}
+  ]
 }

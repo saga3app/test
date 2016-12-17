@@ -52,6 +52,21 @@
           "values" : "docs",
           "selected": "selectedDoc"
         }
+      }, {
+        "name" : "w3",
+        "label" : "Radios",
+        "ui" : "radio-widget",
+		"required": "false",
+		"properties" : {
+			"items" : {
+            "no" : "Ne",
+            "maybe" : "mozna",
+            "yes" : "Ano"
+          }
+		},
+        "binding" : {
+          "selected": "radio"
+        }
       }
       ]
     } ],
@@ -70,6 +85,12 @@
       "condition" : "true",
       "potentialOwner" : {
         "name" : "role1"
+      },
+      "businessAdministrator" : {
+        "name" : "role1Admin"
+      },
+      "initiator": {
+      	"type":"PROCESS_INITIATOR"
       }
     } ]
   } ],

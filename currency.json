@@ -106,6 +106,9 @@
       "condition" : "true",
       "potentialOwner" : {
         "name" : "role1"
+      },
+      "businessAdministrator" : {
+        "name" : "role1Admin"
       }
     } ]
   } ],

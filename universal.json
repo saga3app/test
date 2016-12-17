@@ -26,6 +26,10 @@
   "tasks" : [ {
     "name" : "task1",
     "label" : "Definition",
+    "header": {
+    	"template": "<h2>${client.firstName} ${client.surname}<h2><h2>${account.prefix}-${account.number}/${account.bankCode}",
+    	"watching": ["client.firstName", "client.surname", "account.prefix", "account.number", "account.bankCode"]
+    },
     "sections" : [ {
       "name" : "zaklad",
       "label" : "Zaklad",
@@ -87,6 +91,9 @@
       "condition" : "true",
       "potentialOwner" : {
         "name" : "role1"
+      },
+      "businessAdministrator" : {
+        "name" : "role1Admin"
       }
     } ]
   } ],

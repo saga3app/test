@@ -1,6 +1,6 @@
 {
   "name" : "test",
-  "label" : "Prvni krasny process s formem 4",
+  "label" : "Prvni krasny process s formem",
   "revision" : 23,
   "edges" : [ {
     "name" : "e1",
@@ -37,6 +37,10 @@
   "tasks" : [ {
     "name" : "task1",
     "label" : "Definition",
+    "header": {
+    	"template": "<h1>${cudlik?string('yes', 'no')}<h1><h2>${person.birthDate}</h2><h3>${person.poznamka}</h3>",
+    	"watching": ["person.birthDate", "person.poznamka", "cudlik"]
+    },
     "sections" : [ {
       "name" : "Section 1",
       "label" : "Prvni sekce",
@@ -72,6 +76,9 @@
             "no" : "Ne",
             "maybe" : "mozna",
             "yes" : "Ano"
+          },
+          "disabled": {
+          	"maybe": "person.somelist.indexOf('yes')>=0"
           }
         }
       } ]
@@ -97,6 +104,14 @@
           "value" : "cudlik2"
         },
         "properties" : { }
+      }, {
+        "name" : "w6",
+        "label" : "Editurek",
+        "ui" : "richtext-widget",
+        "binding" : {
+          "value" : "person.poznamka"
+        },
+        "properties" : { }
       } ]
     } ],
     "commands" : [ {
@@ -112,6 +127,7 @@
     }, {
       "name" : "Suspend",
       "label" : "Suspend",
+      "editable": "cudlik2",
       "type" : "SUSPEND",
       "primary" : false
     }, {
@@ -124,6 +140,9 @@
       "condition" : "true",
       "potentialOwner" : {
         "name" : "role1"
+      },
+      "businessAdministrator" : {
+        "name" : "role1Admin"
       }
     } ]
   }, {
@@ -153,7 +172,7 @@
       }
     } ]
   } ],
-  "descriptionExpression" : "\"Prvni krasny process s formem \" + _instance.processId",
+  "descriptionExpression" : "\"Prvni krasny process s formem \" + _instance.instanceId",
   "obsolete" : false,
   "defaultAttributes" : { }
 }
