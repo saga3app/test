@@ -1,0 +1,86 @@
+{
+  "name" : "products",
+  "label" : "Produkty klienta",
+  "revision" : 1,
+  "edges" : [ {
+    "name" : "e1",
+    "condition" : "true",
+    "from" : {
+      "type" : "START"
+    },
+    "to" : {
+      "name" : "task1",
+      "type" : "TASK"
+    }
+  }, {
+    "name" : "e2",
+    "condition" : "true",
+    "from" : {
+      "name" : "task1",
+      "type" : "TASK"
+    },
+    "to" : {
+      "type" : "END"
+    }
+  } ],
+  "tasks" : [ {
+    "name" : "task1",
+    "label" : "Zadost",
+    "header": {
+    	"template": "<h2>${client.firstName} ${client.surname}<h2>",
+    	"watching": ["client.firstName", "client.surname"]
+    },
+    "sections" : [ {
+      "name" : "zaklad",
+      "label" : "Zaklad",
+      "widgets" : [ {
+        "name" : "w1",
+        "label" : "Client",
+        "ui" : "person-widget",
+		"required": "false",
+		"properties" : {
+		},
+        "binding" : {
+          "client" : "client"
+        }
+      }, {
+        "name" : "w2",
+        "label" : "Product",
+        "ui" : "productlist-widget",
+		"required": "false",
+		"properties" : {
+		},
+        "binding" : {
+          "client" : "client",
+          "products" : "client.products"
+        }
+      }
+      ]
+    } ],
+    "commands" : [ {
+      "name" : "Complete",
+      "label" : "Complete",
+      "type" : "COMPLETE",
+      "primary" : true
+    }, {
+      "name" : "Save",
+      "label" : "Save",
+      "type" : "SAVE",
+      "primary" : false
+    } ],
+    "configurations" : [ {
+      "condition" : "true",
+      "potentialOwner" : {
+        "name" : "role1"
+      },
+      "businessAdministrator" : {
+        "name" : "role1Admin"
+      }
+    } ]
+  } ],
+  "descriptionExpression" : "\"Produkty klienta \" + _instance.instanceId",
+  "obsolete" : false,
+  "defaultAttributes" : { },
+  "notifications": [
+  ]
+}

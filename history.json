@@ -1,0 +1,407 @@
+{
+  "name" : "history",
+  "label" : "History of instance",
+  "revision" : 1,
+  "edges" : [ {
+    "name" : "e1",
+    "condition" : "true",
+    "from" : {
+      "type" : "START"
+    },
+    "to" : {
+      "name" : "task1",
+      "type" : "TASK"
+    }
+  }, {
+    "name" : "e2",
+    "condition" : "next=='task2'",
+    "from" : {
+      "name" : "task1",
+      "type" : "TASK"
+    },
+    "to" : {
+      "name" : "task2",
+      "type" : "TASK"
+    }
+  }, {
+    "name" : "e2",
+    "condition" : "next=='task3'",
+    "from" : {
+      "name" : "task1",
+      "type" : "TASK"
+    },
+    "to" : {
+      "name" : "task3",
+      "type" : "TASK"
+    }
+  }, {
+    "name" : "e2",
+    "condition" : "next=='task4'",
+    "from" : {
+      "name" : "task1",
+      "type" : "TASK"
+    },
+    "to" : {
+      "name" : "task4",
+      "type" : "TASK"
+    }
+  },{
+    "name" : "e2",
+    "condition" : "next=='task1'",
+    "from" : {
+      "name" : "task2",
+      "type" : "TASK"
+    },
+    "to" : {
+      "name" : "task1",
+      "type" : "TASK"
+    }
+  },{
+    "name" : "e2",
+    "condition" : "next=='task3'",
+    "from" : {
+      "name" : "task2",
+      "type" : "TASK"
+    },
+    "to" : {
+      "name" : "task3",
+      "type" : "TASK"
+    }
+  },{
+    "name" : "e2",
+    "condition" : "next=='task4'",
+    "from" : {
+      "name" : "task2",
+      "type" : "TASK"
+    },
+    "to" : {
+      "name" : "task4",
+      "type" : "TASK"
+    }
+  },{
+    "name" : "e2",
+    "condition" : "next=='task1'",
+    "from" : {
+      "name" : "task3",
+      "type" : "TASK"
+    },
+    "to" : {
+      "name" : "task1",
+      "type" : "TASK"
+    }
+  },{
+    "name" : "e2",
+    "condition" : "next=='task2'",
+    "from" : {
+      "name" : "task3",
+      "type" : "TASK"
+    },
+    "to" : {
+      "name" : "task2",
+      "type" : "TASK"
+    }
+  },{
+    "name" : "e2",
+    "condition" : "next=='task4'",
+    "from" : {
+      "name" : "task3",
+      "type" : "TASK"
+    },
+    "to" : {
+      "name" : "task4",
+      "type" : "TASK"
+    }
+  },{
+    "name" : "e2",
+    "condition" : "next=='task1'",
+    "from" : {
+      "name" : "task4",
+      "type" : "TASK"
+    },
+    "to" : {
+      "name" : "task1",
+      "type" : "TASK"
+    }
+  },{
+    "name" : "e2",
+    "condition" : "next=='task2'",
+    "from" : {
+      "name" : "task4",
+      "type" : "TASK"
+    },
+    "to" : {
+      "name" : "task2",
+      "type" : "TASK"
+    }
+  },{
+    "name" : "e2",
+    "condition" : "next=='task3'",
+    "from" : {
+      "name" : "task4",
+      "type" : "TASK"
+    },
+    "to" : {
+      "name" : "task3",
+      "type" : "TASK"
+    }
+  } ],
+  "tasks" : [ {
+    "name" : "task1",
+    "label" : "Zadost",
+    "sections" : [ {
+      "name" : "zaklad",
+      "label" : "Zaklad",
+      "widgets" : [ 
+      {
+        "name" : "w3",
+        "label" : "Radios",
+        "ui" : "radio-widget",
+		"required": "false",
+		"properties" : {
+			"items" : {
+	            "task1" : "Task1",
+	            "task2" : "Task2",
+	            "task3" : "Task3",
+	            "task4" : "Task4"
+	         },
+	         "disabled" : {
+	         	"task1": "true"
+	         }
+		},
+        "binding" : {
+          "selected": "next"
+        }
+      },
+      {
+        "name" : "w1",
+        "label" : "History",
+        "ui" : "history-widget",
+		"properties" : {
+		},
+        "binding" : {
+        }
+      }
+      ]
+    } ],
+    "commands" : [ {
+      "name" : "Complete",
+      "label" : "Complete",
+      "type" : "COMPLETE",
+      "primary" : true
+    }, {
+      "name" : "Save",
+      "label" : "Save",
+      "type" : "SAVE",
+      "primary" : false
+    } ],
+    "configurations" : [ {
+      "condition" : "true",
+      "potentialOwner" : {
+        "name" : "role1"
+      },
+      "businessAdministrator" : {
+        "name" : "role1Admin"
+      }
+    } ]
+  }, {
+    "name" : "task2",
+    "label" : "Zpracovani",
+    "sections" : [ {
+      "name" : "zaklad",
+      "label" : "Zaklad",
+      "widgets" : [
+      {
+        "name" : "w3",
+        "label" : "Radios",
+        "ui" : "radio-widget",
+		"required": "false",
+		"properties" : {
+			"items" : {
+            "task1" : "Task1",
+            "task2" : "Task2",
+            "task3" : "Task3",
+            "task4" : "Task4"
+          },
+	         "disabled" : {
+	         	"task2": "true"
+	         }
+		},
+        "binding" : {
+          "selected": "next"
+        }
+      }, 
+      {
+        "name" : "w1",
+        "label" : "History",
+        "ui" : "history-widget",
+		"properties" : {
+		},
+        "binding" : {
+        }
+      }
+      ]
+    } ],
+    "commands" : [ {
+      "name" : "Complete",
+      "label" : "Complete",
+      "type" : "COMPLETE",
+      "primary" : true
+    }, {
+      "name" : "Save",
+      "label" : "Save",
+      "type" : "SAVE",
+      "primary" : false
+    } ],
+    "configurations" : [ {
+      "condition" : "true",
+      "potentialOwner" : {
+        "name" : "role1"
+      },
+      "businessAdministrator" : {
+        "name" : "role1Admin"
+      }
+    } ]
+  }, {
+    "name" : "task3",
+    "label" : "Kontrola",
+    "sections" : [ {
+      "name" : "zaklad",
+      "label" : "Zaklad",
+      "widgets" : [
+      {
+        "name" : "w3",
+        "label" : "Radios",
+        "ui" : "radio-widget",
+		"required": "false",
+		"properties" : {
+			"items" : {
+            "task1" : "Task1",
+            "task2" : "Task2",
+            "task3" : "Task3",
+            "task4" : "Task4"
+          },
+	         "disabled" : {
+	         	"task3": "true"
+	         }
+		},
+        "binding" : {
+          "selected": "next"
+        }
+      }, {
+        "name" : "w1",
+        "label" : "History",
+        "ui" : "history-widget",
+		"properties" : {
+		},
+        "binding" : {
+        }
+      }
+      ]
+    } ],
+    "commands" : [ {
+      "name" : "Complete",
+      "label" : "Complete",
+      "type" : "COMPLETE",
+      "primary" : true
+    }, {
+      "name" : "Save",
+      "label" : "Save",
+      "type" : "SAVE",
+      "primary" : false
+    } ],
+    "configurations" : [ {
+      "condition" : "true",
+      "potentialOwner" : {
+        "name" : "role1"
+      },
+      "businessAdministrator" : {
+        "name" : "role1Admin"
+      }
+    } ]
+  }, {
+    "name" : "task4",
+    "label" : "Kontaktovani klienta",
+    "sections" : [ {
+      "name" : "zaklad",
+      "label" : "Zaklad",
+      "widgets" : [
+      {
+        "name" : "w3",
+        "label" : "Radios",
+        "ui" : "radio-widget",
+		"required": "false",
+		"properties" : {
+			"items" : {
+            "task1" : "Task1",
+            "task2" : "Task2",
+            "task3" : "Task3",
+            "task4" : "Task4"
+          },
+	         "disabled" : {
+	         	"task4": "true"
+	         }
+		},
+        "binding" : {
+          "selected": "next"
+        }
+      }, {
+        "name" : "w1",
+        "label" : "History",
+        "ui" : "history-widget",
+		"properties" : {
+		},
+        "binding" : {
+        }
+      }
+      ]
+    } ],
+    "commands" : [ {
+      "name" : "Complete",
+      "label" : "Complete",
+      "type" : "COMPLETE",
+      "primary" : true
+    }, {
+      "name" : "Save",
+      "label" : "Save",
+      "type" : "SAVE",
+      "primary" : false
+    } ],
+    "configurations" : [ {
+      "condition" : "true",
+      "potentialOwner" : {
+        "name" : "role1"
+      },
+      "businessAdministrator" : {
+        "name" : "role1Admin"
+      }
+    } ]
+  } ],
+  "descriptionExpression" : "\"History of instance \" + _instance.instanceId",
+  "obsolete" : false,
+  "defaultAttributes" : { },
+  "notifications": [
+  ], "overview": {
+    "name" : "overview",
+    "label" : "Prehled pripadu",
+    "sections" : [ {
+      "name" : "zaklad",
+      "label" : "Zaklad",
+      "widgets" : [ {
+        "name" : "w1",
+        "label" : "History",
+        "ui" : "history-widget",
+		"properties" : {
+		},
+        "binding" : {
+        }
+      }
+      ]
+    } ],
+    "commands" : [ {
+      "name" : "close",
+      "label" : "close",
+      "type" : "CLOSE",
+      "primary" : true
+    }]
+  }
+}
